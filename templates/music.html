@@ -8,28 +8,50 @@
         <p>Music:</p>
         <audio controls="controls" autoplay="autoplay"></audio>
         <ul>
+         
         {% for song in songs %}
-            <li><a href="javascript:void(0);">{{song}}</a></li>
+        {%for el in allsongs%}
+            {%if song=="Central Cee - Commitment Issues.mp3"%}
+                {%if el.id==1%}
+                {{el.id}}
+                {{". "}}
+                <b><a href="javascript:void(0);">{{song}}</a></b>
+                {{el.duration}}
+                {{el.artist}}
+                {{el.album}}
+                {%endif%}
+            {%endif%}
+            {%if song=="central-cee-fraud.mp3"%}
+                <p></p>
+                {%if el.id==2%}
+                {{el.id}}
+                {{". "}}
+                <b><a href="javascript:void(0);">{{song}}</a></b>
+                {{el.duration}}
+                {{el.artist}}
+                {{el.album}}
+                {%endif%}
+            {%endif%}
+        {%endfor%}
         {% endfor %}
         </ul>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                Results:
-                <pre>
-                    {% for message in messages %}
-    {{ message }}
-                    {% endfor %}
-                </pre>
-            {% endif %}
-        {% endwith %}
         <script type='text/javascript'>
             {% for song in songs %} 
-                $('li').click(function(){
+                $('b').click(function()
+                {
                     var str = $(this).text()
-                    $('audio').attr('src', '/static/music/'+str);
+                    $('audio').attr('src', '/static/music/' + str);
                 });
             {% endfor %}
         </script>
+        {%for el in allsongs  %}
+            {{el.id}}
+            {{el.name}}
+            {{el.duration}}
+            {{el.artist}}
+            {{el.album}}
+            <p></p>
+        {%endfor%}
     {% endblock %}
     {% block nav %}
     <li><a href="{{url_for('profile')}}">back to profile</a></li>

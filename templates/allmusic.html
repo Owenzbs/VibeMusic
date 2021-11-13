@@ -1,0 +1,23 @@
+{% block body %}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <h1>WO SAP!
+        YOUR WELCOME TO YOUR PROFILE
+    </h1>
+</head>
+    <h1>All music</h1>
+    </form>
+    {%for el in allsongs%}
+        <p>{{el.id}}</p>
+        {{el.name}}
+        {{el.duration}}
+        {{el.artist}}
+        {{el.album}}
+    {%endfor%}
+</html>
+    {% endblock %}
+<li><a href="{{url_for('profile')}}">back to profile</a></li>
