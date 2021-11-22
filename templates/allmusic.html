@@ -1,23 +1,41 @@
 {% block body %}
 <!DOCTYPE html>
-
+<html lang="en">
+<html lang="en">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/static/style.css" />
+        <script type="text/javascript" src="/static/jquery-1.7.1.min.js"></script>
+        <audio controls="controls" autoplay="autoplay"></audio>
+        <ul>
+
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <h1>WO SAP!
-        YOUR WELCOME TO YOUR PROFILE
-    </h1>
+    
 </head>
-    <h1>All music</h1>
     </form>
-    {%for el in allsongs%}
-        <p>{{el.id}}</p>
-        {{el.name}}
-        {{el.duration}}
-        {{el.artist}}
-        {{el.album}}
+
+    {%for x in range(count)%}
+        <tr>
+        <td> {{ result1[x] }} </td>
+        <b><a href="javascript:void(0);">{{ result2[x] }} </a></b>
+        <td> {{ result3[x] }} </td>
+        <td> {{ result4[x] }} </td>
+        <td> {{ result5[x] }} </td>
+        <p></p>
     {%endfor%}
+    
+ <script type='text/javascript'>
+            {% for song in songs %} 
+                $('b').click(function()
+                {
+                    var str = $(this).text()
+                    $('audio').attr('src', '/static/music/' + str);
+                });
+            {% endfor %}
+        </script>
+
 </html>
     {% endblock %}
 <li><a href="{{url_for('profile')}}">back to profile</a></li>
+<li><a href="{{url_for('index')}}">back to search music</a></li>

@@ -8,32 +8,24 @@
         <p>Music:</p>
         <audio controls="controls" autoplay="autoplay"></audio>
         <ul>
-         
-        {% for song in songs %}
-        {%for el in allsongs%}
-            {%if song=="Central Cee - Commitment Issues.mp3"%}
-                {%if el.id==1%}
-                {{el.id}}
-                {{". "}}
-                <b><a href="javascript:void(0);">{{song}}</a></b>
-                {{el.duration}}
-                {{el.artist}}
-                {{el.album}}
-                {%endif%}
-            {%endif%}
-            {%if song=="central-cee-fraud.mp3"%}
-                <p></p>
-                {%if el.id==2%}
-                {{el.id}}
-                {{". "}}
-                <b><a href="javascript:void(0);">{{song}}</a></b>
-                {{el.duration}}
-                {{el.artist}}
-                {{el.album}}
-                {%endif%}
-            {%endif%}
+
+    <p></p>
+ 
+
+    <p></p>
+
+        {%for i in range(count)%}  
+        
+            {{ list1[i] }}
+            {{". "}}
+           <b><a href="javascript:void(0);">{{list2[i]}}</a></b>
+            {{ list3[i] }}
+            {{ list4[i] }}
+            {{ list5[i]}}
+            <p></p>
         {%endfor%}
-        {% endfor %}
+
+        
         </ul>
         <script type='text/javascript'>
             {% for song in songs %} 
@@ -52,7 +44,9 @@
             {{el.album}}
             <p></p>
         {%endfor%}
+
     {% endblock %}
     {% block nav %}
     <li><a href="{{url_for('profile')}}">back to profile</a></li>
+    <li><a href="{{url_for('index')}}">back to search music</a></li>
     {% endblock %}
