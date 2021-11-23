@@ -36,15 +36,7 @@
                 });
             {% endfor %}
         </script>
-        {%for el in allsongs  %}
-            {{el.id}}
-            {{el.name}}
-            {{el.duration}}
-            {{el.artist}}
-            {{el.album}}
-            <p></p>
-        {%endfor%}
-
+        
     {% endblock %}
     {% block nav %}
     <li><a href="{{url_for('profile')}}">back to profile</a></li>
