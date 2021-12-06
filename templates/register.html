@@ -1,23 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.google.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&
+    display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='styleregister.css') }}">
+  	<title>VibeMusic</title>
+
 </head>
+
 <body>
-    <div id ="mainbreak"></div>
-    <div id ="MainloginArea">
-        <h2>Welcome User, Seeme Like you have not registered to our system</h2>
-        <h3>Spend a moment and register yourself</h3>
-<form method = "POST">
-    <input class="form-control" placeholder="Desired UserName" name="DUsername">
-    <br>
-    <input class="form-control" placeholder="Desired Password" name="DPassword", type="Password">
-    <br>
-    <input class="form-control" placeholder="Your e-mail address" name="EmailUser">
-    <br>
-    <input type="Submit" class="btn btn-dark">
-</form>
-    </div>
+	<div class="one"> 
+	<section>
+	<form method='POST' action="/register" enctype = "multipart/form-data">
+	<div class="form">
+                    <i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
+
+                    <h1>Sign Up Now</h1>
+                    <label for="email1">Your email</label>
+                    <br>
+                    <input type="email" name="email1" id="">
+                    <br>
+                    <label for="password1">Enter your password</label>
+                    <br>
+                    <input type="password1" name="password1" id="">
+                    <br>
+                    <label for="password">Confirm your password</label>
+                    <br>
+                    <input type="password" name="password" id="">
+                    <br>
+                    <label for="text">Type your name</label>
+                    <br>
+                    <input type="text" name="text" id="">
+                    <br>
+                    <p>
+                        {{message}}
+                    </p>
+                    <div class="label_block"><label for="checkbox1">I do not want to receive promotional messages from VibeMusic</label>
+                        <input type="checkbox" name="checkbox1" id=""></div>
+                    <br>
+                    <div class="label_block"><label for="checkbox">I authorize my registration information to be shared with                     <label for="checkbox1">I do not want to receive promotional messages from VibeMusic</label>
+                        partners for advertising purposes.
+                       </label>
+                                           <input type="checkbox" name="checkbox2" id=""></div>
+                    <br>
+                    <input type="submit" value="Sign Up">
+                    <hr>
+                    <p>Do you have an account?
+                        <a href="{{url_for('login')}}">Log in</a>
+                    </p>
+	</form>
+	</section>
+	</div>
 </body>
+
 </html>

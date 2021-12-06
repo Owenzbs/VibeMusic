@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-</head>
-<body >
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.google.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&
+    display=swap" rel="stylesheet">
 
-<form action="/login" >
-  
-</form>
-<h1 >{{info}}</h1>
- <li><a href="{{url_for('index')}}"> search music</a></li>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+   <link rel="stylesheet" href="{{ url_for('static', filename='stylelogin.css') }}">
+   <title>VibeMusic</title>
+
+</head>
+
+<body>
+   <div class="one">
+   <section>
+   <form method='POST' action="/login" enctype = "multipart/form-data">
+
+   <div class="form">
+                    <i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
+
+                    <h1>Log In</h1>
+                    <input type="email" name="useremail" class="input-box" placeholder="Your Email">
+                    <input type="password" name="userpassword" class="input-box" placeholder="Your Password">
+
+                    <p><span><input type="checkbox" name="checkbox123" id=""></span> I agree to the terms of services</p>
+                    <p>{{message}}</p>
+                    <input type="submit" value="Log In">
+                    <hr>
+                    <p>Don't have an account ? <a href="{{url_for('register')}}">Sign up</a></p>
+   </form>
+   </section>
+   </div>
 </body>
+
 </html>
