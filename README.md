@@ -1,4 +1,5 @@
 # teamwork
+![alt text](/Без названия (1).png)
 You need to set up git hub on your computer
 Then you need creat a folder in some place
 then you open cmd and go in this folder
