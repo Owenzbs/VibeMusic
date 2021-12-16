@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>VibeMusic</title>
+	<script type="text/javascript" src="/static/jquery-1.7.1.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylechart.css') }}">
+</head>
+<body>
+	<div class="content">
+			<!-- Side navigation -->
+			<div class="sidenav">
+			<a href="#" class="logo"><i class="fa fa-music"></i> &#10072; VibeMusic</a>
+			<a href="{{url_for('profile')}}"><i class="fa fa-user" aria-hidden="true"><span>Profile</span></i></a>
+			<a href="{{url_for('index')}}"><i class="fa fa-home" aria-hidden="true"><span>Home</span></i></a>
+			<a href="#"><i class="fa fa-search" aria-hidden="true"><span>Search</span></i></a>
+
+	
+		</div>
+
+				<!-- Page content -->
+				<div class="main">
+					<div id="one">
+						<img src="static/f6.jpg" alt="refr" width="200px" height="200px">
+						<div id="one_one">
+							<p>playlist</p>
+							<h1>Vibe</h1>
+							<p>All of your favorite hits.</p>
+						</div>
+					</div>
+					<audio controls="controls" autoplay="autoplay"></audio>
+					<div id="two">
+						
+						<span style="color: grey"># NAME</span>
+                        <span style="margin-left: 230px;color: grey">ARTIST</span>
+						<span style="margin-left: 230px;color: grey">ALBUM</span>
+						<span style="margin-left: 230px;color: grey">TIME</span>
+						<hr>
+						{%for i in range(count)%}  
+        
+						{{ list1[i] }}
+						{{". "}}
+						<b><a href="javascript:void(0);">{{list2[i]}}</a></b>
+						{{""}}        
+						{{ list4[i] }}
+						
+						{{ list5[i]}} 
+						
+						{{ list3[i] }}
+						<p></p> 
+						{%endfor%}
+					</div>
+	
+	<script type='text/javascript'>
+		{% for song in songs %} 
+			$('b').click(function()
+			{
+				var str = $(this).text()
+				$('audio').attr('src', '/static/music/' + str);
+			});
+		{% endfor %}
+	</script>
+			</div>
+	</div>
+
+</body>
+</html>

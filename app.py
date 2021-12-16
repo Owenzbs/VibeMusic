@@ -1,17 +1,18 @@
 from re import I
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template, redirect, url_for, session
 import sqlite3
 from mutagen.mp3 import MP3
 import os
 from flask_sqlalchemy import SQLAlchemy
 import eyed3
+from werkzeug.utils import redirect
 
 
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///music.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['WHOOSH_BASE'] ='whoosh'
-
+app.secret_key="Owenzbs"
 
 db=SQLAlchemy(app)
 save_path = 'E:\Proggrams\project\static\music'
@@ -67,6 +68,10 @@ def register():
         newfile=users(email=str(email), username=str(name), password=str(password))
         db.session.add(newfile)
         db.session.commit()
+        signup=request.form.get("Signup")
+        if str(signup)=="Sign Up":
+            session["user"]=name
+            return redirect(url_for('profile'))
     return render_template("register.html")
 
 @app.route('/login',methods=['POST','GET'])
@@ -75,37 +80,38 @@ def login():
         email=request.form.get("useremail")
         password=request.form.get("userpassword")
         userstaff=users.query.order_by(users.id).all()
-        checkbox123=request.form.get("checkbox123")
-        if str(checkbox123)=="None":
-            return render_template("login.html", message="Agree wtih a terms!")
         for el in userstaff:
             if str(el.email) == str(email):
                 if str(el.password) == str(password):
-                    return render_template('profile.html')
-        for i in userstaff:        
+                    session["user"]=el.username
+                    return redirect(url_for('profile'))
+                else: 
+                    return render_template("login.html", message="Incorrect email or password")
+        for i in userstaff:         
             if str(i.email) != str(email):
                 return render_template("login.html", message="Incorrect email")
             if str(i.password) != str(email):
-                return render_template("login.html", message="Incorrect password")
-        
+                return render_template("login.html", message="Incorrect password")    
     return render_template("login.html")
 
 @app.route('/profile', methods=['POST','GET'])
 def profile():
-    if request.method=="POST":
-        file=request.files["inputFile"]
-        file.save(os.path.join(save_path, file.filename))
-        song=f'E:\Proggrams\project\static\music\{file.filename}'
-        track=eyed3.load(song)
-        audio = MP3(song)
-        audio_info=audio.info
-        length = int(audio_info.length)
-        hours, mins, seconds = audio_duration(length)
-        newfile=musicstaff(name=str(track.tag.title), duration="{}:{}:{}".format(hours, mins, seconds), artist=str(track.tag.artist),album=str(track.tag.album))
-        db.session.add(newfile)
-        db.session.commit()
-        
-    return render_template("profile.html", message="Succesfully upload")
+    if "user" in session:
+                user=session["user"]
+                if request.method=="POST":
+                    file=request.files["inputFile"]
+                    file.save(os.path.join(save_path, file.filename))
+                    song=f'E:\Proggrams\project\static\music\{file.filename}'
+                    track=eyed3.load(song)
+                    audio = MP3(song)
+                    audio_info=audio.info
+                    length = int(audio_info.length)
+                    hours, mins, seconds = audio_duration(length)
+                    newfile=musicstaff(name=str(track.tag.title), duration="{}:{}:{}".format(hours, mins, seconds), artist=str(track.tag.artist),album=str(track.tag.album))
+                    db.session.add(newfile)
+                    db.session.commit()
+                    
+                return render_template("profile.html", username=user)
 
 @app.route('/music',methods=['GET'])
 def music():
@@ -124,7 +130,7 @@ def music():
                 list3.append(i.duration)
                 list4.append(i.artist)
                 list5.append(i.album)
-    return render_template("music.html", count=len(songs),   songs=songs, allsongs=allsongs, list1=list1, list2=list2, list3=list3 , list4=list4, list5=list5)
+    return render_template("chart.html", count=len(songs),   songs=songs, allsongs=allsongs, list1=list1, list2=list2, list3=list3 , list4=list4, list5=list5)
 
 #@app.route('/allmusic')
 #def allmusic():
@@ -152,7 +158,7 @@ def search():
                         list4.append(i.artist)
                         list5.append(i.album)
         
-    return render_template("allmusic.html", allsongs=allsongs, songs=songs, count=len(list1), result1=list1, result2=list2, result3=list3, result4=list4, result5=list5)
+    return render_template("index.html", allsongs=allsongs, songs=songs, count=len(list1), result1=list1, result2=list2, result3=list3, result4=list4, result5=list5)
     
 
 

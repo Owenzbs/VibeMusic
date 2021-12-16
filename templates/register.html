@@ -9,16 +9,14 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-
 	<link rel="stylesheet" href="{{ url_for('static', filename='styleregister.css') }}">
   	<title>VibeMusic</title>
-
 </head>
 
 <body>
 	<div class="one"> 
 	<section>
-	<form method='POST' action="/register" enctype = "multipart/form-data">
+    <form method='POST' action="/register" enctype = "multipart/form-data">
 	<div class="form">
                     <i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
 
@@ -47,13 +45,13 @@
                     <br>
                     <div class="label_block"><label for="checkbox">I authorize my registration information to be shared with                     <label for="checkbox1">I do not want to receive promotional messages from VibeMusic</label>
                         partners for advertising purposes.
-                       </label>
-                                           <input type="checkbox" name="checkbox2" id=""></div>
+                        </label>
+                        <input type="checkbox" name="checkbox2" id=""></div>
                     <br>
-                    <input type="submit" value="Sign Up">
+                    <input type="submit" name= "Signup" value="Sign Up">
                     <hr>
                     <p>Do you have an account?
-                        <a href="{{url_for('login')}}">Log in</a>
+                        <a href="">Log in</a>
                     </p>
 	</form>
 	</section>

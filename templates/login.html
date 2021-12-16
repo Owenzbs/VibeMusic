@@ -9,7 +9,6 @@
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-
    <link rel="stylesheet" href="{{ url_for('static', filename='stylelogin.css') }}">
    <title>VibeMusic</title>
 
@@ -26,8 +25,6 @@
                     <h1>Log In</h1>
                     <input type="email" name="useremail" class="input-box" placeholder="Your Email">
                     <input type="password" name="userpassword" class="input-box" placeholder="Your Password">
-
-                    <p><span><input type="checkbox" name="checkbox123" id=""></span> I agree to the terms of services</p>
                     <p>{{message}}</p>
                     <input type="submit" value="Log In">
                     <hr>

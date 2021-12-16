@@ -1,27 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>PROFILE</title>
-    <h1>WO SAP!
-        YOUR WELCOME TO YOUR PROFILE
-    </h1>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>VibeMusic</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='profileStyles.css') }}">
 </head>
 <body>
-    <h1>Upload new File</h1>
-    <form method='POST' action="/profile" enctype = "multipart/form-data">
-        <div class="form-group">
-        <label for = "inputFile">File input</label>
-        <input type = "file" name="inputFile">
-        </div>
-
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-    <p>
-        {{message}}
-    </p>
-    <li><a href="{{url_for('index')}}">back to search music</a></li>
-    <a href="music">Your added songs</a>
+	<div class="content">			
+			<!-- Side navigation -->
+			<div class="sidenav">
+			<a href="#" class="logo"><i class="fa fa-music"></i> &#10072; VibeMusic</a>
+			<a href="{{url_for('index')}}"><i class="fa fa-home" aria-hidden="true"><span>Home</span></i></a>
+			<a href="{{url_for('music')}}"><i class="fa fa-book" aria-hidden="true"><span>Library</span></i></a>
+		</div>
+	
+				<!-- Page content -->
+				<div class="main">
+					<div id="one">
+						<img src="static/image/Oleg.jpg" alt="refr" width="200px" height="200px">
+						<div id="one_one">
+							<p>Profile</p>
+							<h1>{{username}}</h1>
+							<p>X SONGS X MINUTES</p>
+						</div>
+					</div>
+					<div id="two">
+						
+			<form method='POST' action="/profile" enctype = "multipart/form-data">
+				Input your song
+				<input type="file" name="inputFile" class="button-container"
+					style="width: 320px;" id="choose-file"
+					
+				></a>
+				<div id="three">
+			
+					<button type="submit" class="button-container2"
+						style="width: 130px;"
+					> Submit✔</a>	
+				</div>
+					
+					</form>
+					</div>
+				</div>
+			</div>
+			
+	</div>
+	<script src="../static/js/jquery-3.6.0.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
 </body>
 </html>

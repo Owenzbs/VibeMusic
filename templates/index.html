@@ -15,5 +15,26 @@
     <input type = "submit" placeholder="Submit">
     
     <h1 >{{info}}</h1>
+    
+    {%for x in range(count)%}
+        <tr>
+        <td> {{ result1[x] }} </td>
+        <b><a href="javascript:void(0);">{{ result2[x] }} </a></b>
+        <td> {{ result3[x] }} </td>
+        <td> {{ result4[x] }} </td>
+        <td> {{ result5[x] }} </td>
+        <p></p>
+    {%endfor%}
+    
+ <script type='text/javascript'>
+            {% for song in songs %} 
+                $('b').click(function()
+                {
+                    var str = $(this).text()
+                    $('audio').attr('src', '/static/music/' + str);
+                });
+            {% endfor %}
+        </script>
+
 </body>
 </html>
