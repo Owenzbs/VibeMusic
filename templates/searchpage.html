@@ -1,0 +1,65 @@
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>VibeMusic</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='searchstyle.css') }}">
+	<script type="text/javascript" src="/static/jquery-1.7.1.min.js"></script>
+    
+</head>
+<body>
+	<div class="content">
+			<!-- Side navigation -->
+			<div class="sidenav">
+			<a href="" class="logo"><i class="fa fa-music"></i> &#10072; VibeMusic</a>
+			<a href="{{url_for('profile')}}"><i class="fa fa-user" aria-hidden="true"><span>Profile</span></i></a>
+			<a href="{{url_for('index')}}"><i class="fa fa-home" aria-hidden="true"><span>Home</span></i></a>
+            <a href="{{url_for('music')}}"><i class="fa fa-list" aria-hidden="true"><span>Chart</span></i></a>
+		</div>
+				<!-- Page content -->
+				<div class="main">
+<div class="wrapper">
+	<form  action="search" method="POST">
+	<input type="text" name="title" class="input" placeholder="Enter name of song...">
+</div>
+<div id="three">
+			
+	<button type="submit" class="button-container2"
+		style="width: 130px;"
+	> Search🔍</a>	
+</div>
+<div class="audioplay"><audio controls="controls" autoplay="autoplay"></audio></div>
+<div class="showmusic">
+	{%for x in range(count)%}
+        <td> {{ result1[x] }} </td>
+        <b><a href="javascript:void(0);">{{ result2[x] }} </a></b>
+        <td> {{ result3[x] }} </td>
+        <td> {{ result4[x] }} </td>
+        <td> {{ result5[x] }} </td>
+        <p></p>
+    {%endfor%}
+    
+    <script type='text/javascript'>
+        {% for song in songs %} 
+            $('b').click(function()
+            {
+                var str = $(this).text()
+                $('audio').attr('src', '/static/music/' + str);
+            });
+        {% endfor %}
+    </script>
+
+
+</div>
+	
+				</div>
+				
+	</div>
+</body>
+{% endblock %}
+</html>

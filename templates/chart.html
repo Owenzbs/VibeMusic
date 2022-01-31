@@ -17,7 +17,7 @@
 			<a href="#" class="logo"><i class="fa fa-music"></i> &#10072; VibeMusic</a>
 			<a href="{{url_for('profile')}}"><i class="fa fa-user" aria-hidden="true"><span>Profile</span></i></a>
 			<a href="{{url_for('index')}}"><i class="fa fa-home" aria-hidden="true"><span>Home</span></i></a>
-			<a href="#"><i class="fa fa-search" aria-hidden="true"><span>Search</span></i></a>
+			<a href="{{url_for('search')}}"><i class="fa fa-search" aria-hidden="true"><span>Search</span></i></a>
 
 	
 		</div>
@@ -30,15 +30,17 @@
 							<p>playlist</p>
 							<h1>Vibe</h1>
 							<p>All of your favorite hits.</p>
+							<audio controls="controls" autoplay="autoplay"></audio>
 						</div>
 					</div>
-					<audio controls="controls" autoplay="autoplay"></audio>
+					
 					<div id="two">
 						
 						<span style="color: grey"># NAME</span>
                         <span style="margin-left: 230px;color: grey">ARTIST</span>
 						<span style="margin-left: 230px;color: grey">ALBUM</span>
 						<span style="margin-left: 230px;color: grey">TIME</span>
+						
 						<hr>
 						{%for i in range(count)%}  
         

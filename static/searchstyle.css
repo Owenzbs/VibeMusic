@@ -1,0 +1,229 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+    margin: 0;
+    color: whitesmoke;
+    background-repeat: no-repeat;
+    background-position: center;
+    list-style-type: none;
+    text-align: left;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+    margin-right: 0px;
+    background-color: rgba(0, 0, 0, 0);}
+button:nth-child(1) span:hover {
+    color: #ffffff;
+}
+
+button span{
+    font-size: 3em;
+    color: #96edff;
+    line-height: 20px;
+}
+
+.sidenav a:not(:nth-child(1)) i:hover{
+    color: white;
+}
+
+.sidenav a:not(:nth-child(1)) i{
+    color: #96edff;
+}
+
+div.main {
+   display: flex;
+   flex-direction: column;
+   flex-wrap: nowrap;
+   height: 100vh;
+background: linear-gradient(44deg,#0f2b4c, #155caa);
+background-size: cover;
+}
+
+div#one {
+    height: fit-content;
+    padding: 5% 5% 3% 5%;
+    background: linear-gradient(44deg,#0f2b4c, #155caa);
+}
+
+div#one h1 {
+    font-size: 45px;
+}
+
+
+
+div#one>div {
+    max-width: 450px;
+    max-height: 150px;
+    margin-top: 0px;
+    margin-left: 15%;
+}
+ul {
+    display: none;
+}
+
+i {
+    color: whitesmoke;
+    text-align: center;
+}
+
+.sidenav a :not(:nth-child(1)) i span{
+    margin-left: 70px;
+
+}
+
+.sidenav a i span{
+    font-family: sans-serif;
+    margin-left: 10px;
+}
+
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 250px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #96edff;
+    display: block;
+    font-family: sans-serif;
+}
+
+.sidenav a:nth-child(1){
+    color: #00d4ff;
+}
+
+.sidenav a:nth-child(1):hover{
+    color: #00d4ff;
+
+}
+
+.sidenav a i{
+    color: #00d4ff;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+    margin-left: 250px; /* Same as the width of the sidebar */
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+div.content{
+    display: grid;
+    grid-template-columns: 400px, 1fr;
+}
+
+a.logo{
+    text-transform: uppercase;
+    font-size: 1.5em;
+}
+.wrapper{
+	position: absolute;
+    top: 6%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0,0.6);
+    max-width: 400px;
+    width: 70%;
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.wrapper .input {
+    width: 89%;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.searchbtn {
+    background: #4594c5;
+    width: 10%;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+.searchbtn .fa{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+
+.audioplay 
+{
+    position: absolute; 
+    top: 20%;
+    left: 35%;
+    border-radius: 3px;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+
+.showmusic
+{
+    position: absolute; 
+    color: white;
+    top: 28%;
+    left:40%;
+    resize: both;
+    border-radius: 3px;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+.button-container2{
+    text-decoration: none;
+    display: flex;
+    line-height: 45px;
+    border-radius: 45px;
+    margin: 10px -64px;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+    font-size: 15px;
+    text-transform: uppercase;
+    justify-content: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #1765ca;
+    background: white;
+    transition: .3s;
+    position: relative;
+    top: 20px;
+    left: 600px;
+}
+
+.button-container2:hover{
+    background: #00d4ff;
+    box-shadow: 0 15px 20px rgba(2, 183, 255, 0.4);
+    color: white;
+    transform: translateY(-7px);
+}

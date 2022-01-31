@@ -1,3 +1,4 @@
+{% block body %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +10,13 @@
 <h1 align="center">Welcome {{name}} !</h1>
     <a href="music">Your added songs</a>
     <p></p>
-    
+    <audio controls="controls" autoplay="autoplay"></audio>
      <form  action="search" method="POST">
     <input type='text' name="title" placeholder="Enter name of song"> <br><br>
     <input type = "submit" placeholder="Submit">
-    
-    <h1 >{{info}}</h1>
+    <script type="text/javascript" src="/static/jquery-1.7.1.min.js"></script>
     
     {%for x in range(count)%}
-        <tr>
         <td> {{ result1[x] }} </td>
         <b><a href="javascript:void(0);">{{ result2[x] }} </a></b>
         <td> {{ result3[x] }} </td>
@@ -26,15 +25,15 @@
         <p></p>
     {%endfor%}
     
- <script type='text/javascript'>
-            {% for song in songs %} 
-                $('b').click(function()
-                {
-                    var str = $(this).text()
-                    $('audio').attr('src', '/static/music/' + str);
-                });
-            {% endfor %}
-        </script>
-
+    <script type='text/javascript'>
+        {% for song in songs %} 
+            $('b').click(function()
+            {
+                var str = $(this).text()
+                $('audio').attr('src', '/static/music/' + str);
+            });
+        {% endfor %}
+    </script>
+        {% endblock %}
 </body>
 </html>

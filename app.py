@@ -158,7 +158,7 @@ def search():
                         list4.append(i.artist)
                         list5.append(i.album)
         
-    return render_template("index.html", allsongs=allsongs, songs=songs, count=len(list1), result1=list1, result2=list2, result3=list3, result4=list4, result5=list5)
+    return render_template("searchpage.html", allsongs=allsongs, songs=songs, count=len(list1), result1=list1, result2=list2, result3=list3, result4=list4, result5=list5)
     
 
 

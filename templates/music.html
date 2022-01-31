@@ -27,15 +27,15 @@
 
         
         </ul>
-        <script type='text/javascript'>
-            {% for song in songs %} 
-                $('b').click(function()
-                {
-                    var str = $(this).text()
-                    $('audio').attr('src', '/static/music/' + str);
-                });
-            {% endfor %}
-        </script>
+    <script type='text/javascript'>
+        {% for song in songs %} 
+            $('b').click(function()
+            {
+                var str = $(this).text()
+                $('audio').attr('src', '/static/music/' + str);
+            });
+        {% endfor %}
+    </script>
         
     {% endblock %}
     {% block nav %}
